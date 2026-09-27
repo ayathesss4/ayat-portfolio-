@@ -33,7 +33,7 @@ function Hero() {
             </h1>
 
             <p className="fade-up-delay-2 mt-7 max-w-xl text-base leading-7 text-[#67635D] dark:text-[#AAA69F] sm:text-lg">
-              I’m Ayat Hassan Ali, a Computer Engineering graduate and
+              I’m Ayat Hassan, a Computer Engineering graduate and
               Frontend Developer focused on React, responsive interfaces and
               thoughtful user experiences.
             </p>

@@ -7,6 +7,8 @@ const projects = [
     category: "ERP Web App / PWA",
     description:
       "Arabic-first RTL ERP web application designed for modular business management with a clean and responsive experience.",
+    problem:
+      "Many business management systems can feel complicated and difficult to use, especially for Arabic-speaking users. MADAR addresses this by providing a clear Arabic RTL interface with modular business management.",
     tech: ["React", "TanStack", "Supabase", "Tailwind CSS"],
     link: "https://madar-the-core-erp.vercel.app",
     features: [
@@ -25,6 +27,8 @@ const projects = [
     category: "E-commerce Frontend",
     description:
       "Modern fashion e-commerce frontend focused on product presentation, responsive layouts and a smooth shopping experience.",
+    problem:
+      "Online fashion stores need to present products clearly while making browsing and product selection simple across different screen sizes. This project focuses on creating a clean and responsive shopping experience.",
     tech: ["React", "Vite", "Tailwind CSS", "LocalStorage"],
     link: "https://clothing-store-seven-beta.vercel.app/",
     features: [
@@ -43,6 +47,8 @@ const projects = [
     category: "Admin Dashboard",
     description:
       "Responsive store management dashboard with statistics, product management and modern data visualization.",
+    problem:
+      "Store management requires a clear way to view important business information and manage products without navigating through complicated interfaces. This dashboard organizes key information into a structured management experience.",
     tech: ["React", "Vite", "Recharts", "React Icons"],
     link: "https://clothing-store-dashboard.vercel.app",
     features: [
@@ -61,6 +67,8 @@ const projects = [
     category: "Healthcare Web App",
     description:
       "Clean dental-care web interface designed to organize treatment planning and present healthcare information clearly.",
+    problem:
+      "Healthcare information can become difficult to follow when treatment details are presented without a clear structure. This project focuses on organizing dental-care information and treatment planning into a simple interface.",
     tech: ["React", "Responsive UI", "Component Design"],
     link: "https://my-dental-plan.lovable.app",
     features: [
@@ -78,6 +86,8 @@ const projects = [
     category: "Interactive Web Experience",
     description:
       "Interactive coffee-themed web experience focused on visual storytelling, modern design and simple user interactions.",
+    problem:
+      "A simple product or theme can be difficult to communicate through a static interface. This project explores how visual storytelling and lightweight interactions can create a more engaging web experience.",
     tech: ["React", "UI Design", "Responsive Design"],
     link: "https://espresso-moment-maker.lovable.app",
     features: [
@@ -94,12 +104,12 @@ function Projects({ onSelectProject }) {
   return (
     <section
       id="projects"
-      className="border-t border-black/5 py-24 dark:border-white/10"
+      className="border-t border-[#DDD8D0] py-24 dark:border-white/10"
     >
       <div className="section-container">
         <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <div>
-            <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#8b6f47]">
+            <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#C83B35]">
               Selected Work
             </p>
 
@@ -108,7 +118,7 @@ function Projects({ onSelectProject }) {
             </h2>
           </div>
 
-          <p className="max-w-md text-sm leading-6 text-black/50 dark:text-white/50">
+          <p className="max-w-md text-sm leading-6 text-[#6B6965] dark:text-[#A9A6A0]">
             A selection of frontend applications, dashboards and responsive
             web experiences.
           </p>
@@ -118,11 +128,11 @@ function Projects({ onSelectProject }) {
           {projects.map((project) => (
             <article
               key={project.number}
-              className="project-card group overflow-hidden rounded-[30px] border border-black/10 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-[#191919]"
+              className="project-card group overflow-hidden rounded-[30px] border border-[#DDD8D0] bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-[#191919]"
             >
               <button
                 onClick={() => onSelectProject(project)}
-                className="relative block aspect-[16/9] w-full overflow-hidden bg-[#e9e3d9] text-left dark:bg-[#25231f]"
+                className="relative block aspect-[16/9] w-full overflow-hidden bg-[#EAE7E1] text-left dark:bg-[#242424]"
               >
                 <div className="absolute inset-0 flex items-center justify-center transition duration-500 group-hover:scale-105">
                   <div className="text-center">
@@ -152,7 +162,7 @@ function Projects({ onSelectProject }) {
               <div className="p-7">
                 <div className="flex items-start justify-between gap-6">
                   <div>
-                    <p className="text-xs font-medium uppercase tracking-[0.15em] text-[#8b6f47]">
+                    <p className="text-xs font-medium uppercase tracking-[0.15em] text-[#C83B35]">
                       {project.category}
                     </p>
 
@@ -170,7 +180,7 @@ function Projects({ onSelectProject }) {
                   </button>
                 </div>
 
-                <p className="mt-4 text-sm leading-6 text-black/55 dark:text-white/55">
+                <p className="mt-4 text-sm leading-6 text-[#6B6965] dark:text-[#A9A6A0]">
                   {project.description}
                 </p>
 
