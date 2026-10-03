@@ -1,11 +1,7 @@
-```jsx
+import Test from "./Test";
+
 function App() {
-  return (
-    <div>
-      <h1>Ayat Portfolio</h1>
-    </div>
-  );
+  return <Test />;
 }
 
 export default App;
-```

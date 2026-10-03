@@ -1,10 +1,46 @@
+import { useEffect } from "react";
 import { ArrowLeft, ArrowUpRight, Check } from "lucide-react";
 
 function ProjectDetails({ project, onBack }) {
+  useEffect(() => {
+    const forceScrollToTop = () => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "auto",
+      });
+
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    };
+
+    // Initial scroll
+    forceScrollToTop();
+
+    // After browser paints the new page
+    const frame1 = requestAnimationFrame(() => {
+      forceScrollToTop();
+
+      requestAnimationFrame(() => {
+        forceScrollToTop();
+      });
+    });
+
+    // Extra protection against iframe/layout restoration
+    const timeout = setTimeout(() => {
+      forceScrollToTop();
+    }, 150);
+
+    return () => {
+      cancelAnimationFrame(frame1);
+      clearTimeout(timeout);
+    };
+  }, [project]);
+
   if (!project) return null;
 
   return (
-    <main className="min-h-screen bg-[#F3F0EA] text-[#171717] dark:bg-[#0D0D0E] dark:text-white">
+    <main className="min-h-screen overflow-anchor-none bg-[#F3F0EA] text-[#171717] dark:bg-[#0D0D0E] dark:text-white">
       <div className="section-container py-10">
         {/* Back */}
         <button

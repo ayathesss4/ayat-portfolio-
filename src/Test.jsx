@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -12,22 +12,72 @@ import Footer from "./components/Footer";
 function Test() {
   const [selectedProject, setSelectedProject] = useState(null);
 
-  const handleSelectProject = (project) => {
-    setSelectedProject(project);
+  // Prevent the browser from restoring the previous scroll position.
+  useEffect(() => {
+    window.history.scrollRestoration = "manual";
 
-    // فتح صفحة المشروع من أعلى الصفحة
-    window.scrollTo(0, 0);
+    return () => {
+      window.history.scrollRestoration = "auto";
+    };
+  }, []);
+
+  // Always start the project details page from the top.
+  useEffect(() => {
+    if (!selectedProject) return;
+
+    const scrollToTop = () => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "auto",
+      });
+
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    };
+
+    scrollToTop();
+
+    const frame1 = requestAnimationFrame(() => {
+      scrollToTop();
+
+      requestAnimationFrame(() => {
+        scrollToTop();
+      });
+    });
+
+    const timeout = setTimeout(() => {
+      scrollToTop();
+    }, 100);
+
+    return () => {
+      cancelAnimationFrame(frame1);
+      clearTimeout(timeout);
+    };
+  }, [selectedProject]);
+
+  const handleSelectProject = (project) => {
+    // Move to the top immediately before rendering details.
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "auto",
+    });
+
+    setSelectedProject(project);
   };
 
   const handleBackToProjects = () => {
     setSelectedProject(null);
 
-    // الرجوع إلى أعلى قسم المشاريع
-    setTimeout(() => {
+    requestAnimationFrame(() => {
       document
         .getElementById("projects")
-        ?.scrollIntoView({ behavior: "smooth" });
-    }, 0);
+        ?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+    });
   };
 
   if (selectedProject) {
@@ -51,9 +101,7 @@ function Test() {
         <Hero />
         <About />
         <Skills />
-
         <Projects onSelectProject={handleSelectProject} />
-
         <Contact />
       </main>
 
